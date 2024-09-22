@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time until Election</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <title>Election Countdown</title>
     <style>
         body {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            text-align: center; /* Center-align text */
+            font-family: Arial, Helvetica, sans-serif;
         }
         .countdown, .days, .moochies {
             font-size: 4em;
@@ -47,13 +44,14 @@
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-
 </head>
 <body>
-    <div id="countdown" class="countdown">Countdown</div>
-    <div id="days" class="days">Days</div>
-    <div id="moochies" class="moochies">Moochies</div>
-    <div id="quote" class="quote"></div>
+    <div id="content">
+        <div id="countdown" class="countdown">Countdown</div>
+        <div id="days" class="days">Days</div>
+        <div id="moochies" class="moochies">Moochies</div>
+        <!-- <div id="quote" class="quote"></div> -->
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

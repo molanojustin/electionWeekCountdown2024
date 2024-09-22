@@ -51,19 +51,30 @@ async function fetchQuotes() {
 }
 
 document.addEventListener('DOMContentLoaded', async (event) => {
-    const date = new Date().toISOString().slice(5, 10); // Get current date in MM-DD format
-    const weeksUntilElection = calculateWeeksUntilElection(date);
-    const daysUntilElection = calculateDaysUntilElection(date);
-    const currentDateTime = new Date().toISOString();
-    const moochiesUntilElection = calculateMoochies(currentDateTime);
-    const countdownElement = document.getElementById('countdown');
-    const daysElement = document.getElementById('days');
-    const moochiesElement = document.getElementById('moochies');
-    countdownElement.textContent = `${weeksUntilElection} week${weeksUntilElection !== 1 ? 's' : ''}`;
-    daysElement.textContent = `${daysUntilElection} day${daysUntilElection !== 1 ? 's' : ''}`;
-    moochiesElement.textContent = `${moochiesUntilElection} Scaramucci${moochiesUntilElection !== 1 ? 's' : ''}`;
+    const currentDate = new Date();
+    const electionDate = new Date('2024-11-05');
 
-    const quote = await fetchQuotes();
-    const quoteElement = document.getElementById('quote');
-    quoteElement.textContent = quote;
+    if (currentDate >= electionDate) {
+        // Embed the video
+        const contentElement = document.getElementById('content');
+        contentElement.innerHTML = `
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/jt6riM2aDLk?si=_WfQIVdj97cJDAA-&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        `;
+    } else {
+        const date = currentDate.toISOString().slice(5, 10); // Get current date in MM-DD format
+        const weeksUntilElection = calculateWeeksUntilElection(date);
+        const daysUntilElection = calculateDaysUntilElection(date);
+        const currentDateTime = currentDate.toISOString();
+        const moochiesUntilElection = calculateMoochies(currentDateTime);
+        const countdownElement = document.getElementById('countdown');
+        const daysElement = document.getElementById('days');
+        const moochiesElement = document.getElementById('moochies');
+        countdownElement.textContent = `${weeksUntilElection} week${weeksUntilElection !== 1 ? 's' : ''}`;
+        daysElement.textContent = `${daysUntilElection} day${daysUntilElection !== 1 ? 's' : ''}`;
+        moochiesElement.textContent = `${moochiesUntilElection} Scaramucci${moochiesUntilElection !== 1 ? 's' : ''}`;
+
+        const quote = await fetchQuotes();
+        const quoteElement = document.getElementById('quote');
+        quoteElement.textContent = quote;
+    }
 });
