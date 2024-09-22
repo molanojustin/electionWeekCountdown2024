@@ -18,13 +18,21 @@
                     font-family: Arial, sans-serif;
                 }
                 .countdown, .days, .moochies {
-                    font-size: 5em;
+                    font-size: 4em;
                     font-weight: bold;
-                    margin: 10px 0;
+                    margin: 10px 10;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 @media (max-width: 600px) {
-                    .moochies {
-                        display: none;
+                    .countdown, .days, .moochies {
+                        font-size: 3em;
+                    }
+                }
+                @media (max-width: 400px) {
+                    .countdown, .days, .moochies {
+                        font-size: 2em;
                     }
                 }
             </style>
