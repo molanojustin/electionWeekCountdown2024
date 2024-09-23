@@ -1,48 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Election Countdown</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center; /* Center-align text */
-            font-family: Arial, sans-serif;
-        }
-        .countdown, .days, .mooches {
-            font-size: 4em;
-            font-weight: bold;
-            margin: 10px 10;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .quote {
-            font-size: 0.8em;
-            color: grey;
-            font-style: italic;
-            max-width: 100%;
-            text-align: center;
-            white-space: pre-wrap; /* Allows text to wrap */
-            word-wrap: break-word; /* Breaks long words */
-        }
-
-        @media (max-width: 600px) {
-            .countdown, .days, .mooches {
-                font-size: 2em;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <title>Election Countdown</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                text-align: center; /* Center-align text */
+                font-family: Arial, sans-serif;
+                flex-direction: column; /* Ensure content stacks vertically */
+                padding: 20px; /* Add some padding to avoid text touching edges */
+                box-sizing: border-box; /* Include padding in element's total width and height */
             }
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-</head>
+            .countdown, .days, .mooches {
+                font-size: 8vw; /* Use viewport width units for responsive font size */
+                font-weight: bold;
+                margin: 10px 0; /* Adjust margin to avoid horizontal overflow */
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .quote {
+                font-size: 2vw; /* Use viewport width units for responsive font size */
+                color: grey;
+                font-style: italic;
+                max-width: 100%;
+                text-align: center;
+                white-space: pre-wrap; /* Allows text to wrap */
+                word-wrap: break-word; /* Breaks long words */
+            }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    </head>
 <body>
     <div id="content">
         <div id="countdown" class="countdown">Countdown</div>
