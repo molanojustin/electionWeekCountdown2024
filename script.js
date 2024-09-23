@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         const moochesElement = document.getElementById('mooches');
         countdownElement.textContent = `${weeksUntilElection} week${weeksUntilElection !== 1 ? 's' : ''}`;
         daysElement.textContent = `${daysUntilElection} day${daysUntilElection !== 1 ? 's' : ''}`;
-        moochesElement.innerHTML = `${moochesUntilElection} Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: large;"><a href="https://theweek.com/speedreads/861881/anthony-scaramucci-measures-time-mooches" target="_blank" style="text-decoration: none;">*</a></sup>`;
+        moochesElement.innerHTML = `${moochesUntilElection} Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://theweek.com/speedreads/861881/anthony-scaramucci-measures-time-mooches" target="_blank" style="text-decoration: none;">*</a></sup>`;
 
         const quote = await fetchQuotes();
         const quoteElement = document.getElementById('quote');
