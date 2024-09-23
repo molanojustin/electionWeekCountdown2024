@@ -15,12 +15,12 @@ function calculateDaysUntilElection(date) {
     return daysUntilElection;
 }
 
-function calculateMoochies(date) {
+function calculateMooches(date) {
     const electionDate = new Date('2024-11-05T00:00:00');
     let inputDate = new Date(date);
-    const minutesUntilElection = Math.ceil((electionDate - inputDate) / (60 * 1000));
-    const moochiesUntilElection = (minutesUntilElection / 15840).toFixed(2);
-    return moochiesUntilElection;
+    const secondsUntilElection = Math.ceil((electionDate - inputDate) / 1000);
+    const moochesUntilElection = (secondsUntilElection / (15840*60)).toFixed(6);
+    return moochesUntilElection;
 }
 
 async function fetchQuotes() {
@@ -65,13 +65,13 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         const weeksUntilElection = calculateWeeksUntilElection(date);
         const daysUntilElection = calculateDaysUntilElection(date);
         const currentDateTime = currentDate.toISOString();
-        const moochiesUntilElection = calculateMoochies(currentDateTime);
+        const moochesUntilElection = calculateMooches(currentDateTime);
         const countdownElement = document.getElementById('countdown');
         const daysElement = document.getElementById('days');
-        const moochiesElement = document.getElementById('moochies');
+        const moochesElement = document.getElementById('mooches');
         countdownElement.textContent = `${weeksUntilElection} week${weeksUntilElection !== 1 ? 's' : ''}`;
         daysElement.textContent = `${daysUntilElection} day${daysUntilElection !== 1 ? 's' : ''}`;
-        moochiesElement.innerHTML = `${moochiesUntilElection} Mooche${moochiesUntilElection !== 1 ? 's' : ''}<sup style="font-size: large;"><a href="https://theweek.com/speedreads/861881/anthony-scaramucci-measures-time-mooches" target="_blank" style="text-decoration: none;">*</a></sup>`;
+        moochesElement.innerHTML = `${moochesUntilElection} Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: large;"><a href="https://theweek.com/speedreads/861881/anthony-scaramucci-measures-time-mooches" target="_blank" style="text-decoration: none;">*</a></sup>`;
 
         const quote = await fetchQuotes();
         const quoteElement = document.getElementById('quote');
