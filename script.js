@@ -8,11 +8,11 @@ function calculateWeeksUntilElection(date) {
     return weeksUntilElection;
 }
 
-function calculateDaysUntilElection(date) {
-    const electionDate = new Date('2024-11-05');
-    let inputDate = new Date(`2024-${date}`);
-    const daysUntilElection = Math.ceil((electionDate - inputDate) / (24 * 60 * 60 * 1000));
-    return daysUntilElection;
+// Function to calculate days until election
+function calculateDaysUntilElection(currentDate, electionDate) {
+    const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
+    const diffDays = Math.ceil((electionDate - currentDate) / oneDay);
+    return diffDays;
 }
 
 function calculateMooches(date) {
@@ -52,7 +52,7 @@ async function fetchQuotes() {
 
 document.addEventListener('DOMContentLoaded', async (event) => {
     const currentDate = new Date();
-    const electionDate = new Date('2024-11-05');
+    const electionDate = new Date('2024-11-05T00:00:00'); // Election date in local time
 
     if (currentDate >= electionDate) {
         // Embed the video
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     } else {
         const date = currentDate.toISOString().slice(5, 10); // Get current date in MM-DD format
         const weeksUntilElection = calculateWeeksUntilElection(date);
-        const daysUntilElection = calculateDaysUntilElection(date);
+        const daysUntilElection = calculateDaysUntilElection(currentDate, electionDate);
         const currentDateTime = currentDate.toISOString();
         const moochesUntilElection = calculateMooches(currentDateTime);
         const countdownElement = document.getElementById('countdown');
