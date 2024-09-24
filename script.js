@@ -1,9 +1,9 @@
 function calculateWeeksUntilElection(date) {
     const electionDate = new Date('2024-11-05');
     let inputDate = new Date(`2024-${date}`);
-    while (inputDate.getDay() !== 2) {
-        inputDate.setDate(inputDate.getDate() + 1);
-    }
+    // while (inputDate.getDay() !== 2) {
+    //     inputDate.setDate(inputDate.getDate() + 1);
+    // }
     const weeksUntilElection = Math.ceil((electionDate - inputDate) / (7 * 24 * 60 * 60 * 1000));
     return weeksUntilElection;
 }
@@ -67,13 +67,13 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         const countdownElement = document.getElementById('countdown');
         const daysElement = document.getElementById('days');
         const moochesElement = document.getElementById('mooches');
-        countdownElement.textContent = `${weeksUntilElection} week${weeksUntilElection !== 1 ? 's' : ''}`;
-        daysElement.textContent = `${daysUntilElection} day${daysUntilElection !== 1 ? 's' : ''}`;
+        countdownElement.textContent = `Week: ${weeksUntilElection}`;
+        daysElement.textContent = `Day: ${daysUntilElection}`;
 
         function updateMooches() {
             const currentDateTime = new Date().toISOString();
             const moochesUntilElection = calculateMooches(currentDateTime);
-            moochesElement.innerHTML = `${moochesUntilElection} Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://theweek.com/speedreads/861881/anthony-scaramucci-measures-time-mooches" target="_blank" style="text-decoration: none;">*</a></sup>`;
+            moochesElement.innerHTML = `Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://theweek.com/speedreads/861881/anthony-scaramucci-measures-time-mooches" target="_blank" style="text-decoration: none;">*</a></sup>: ${moochesUntilElection}`;
         }
 
         updateMooches();
