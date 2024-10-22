@@ -1,13 +1,3 @@
-function calculateWeeksUntilElection(date) {
-    const electionDate = new Date('2024-11-05');
-    let inputDate = new Date(`2024-${date}`);
-    // while (inputDate.getDay() !== 2) {
-    //     inputDate.setDate(inputDate.getDate() + 1);
-    // }
-    const weeksUntilElection = Math.ceil((electionDate - inputDate) / (7 * 24 * 60 * 60 * 1000));
-    return weeksUntilElection;
-}
-
 // Function to calculate days until election
 function calculateDaysUntilElection(currentDate, electionDate) {
     const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
@@ -62,7 +52,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         `;
     } else {
         const date = currentDate.toISOString().slice(5, 10); // Get current date in MM-DD format
-        // const weeksUntilElection = calculateWeeksUntilElection(date);
         const daysUntilElection = calculateDaysUntilElection(currentDate, electionDate);
         const weeksUntilElection = Math.floor(daysUntilElection / 7);
         const countdownElement = document.getElementById('countdown');
@@ -74,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         function updateMooches() {
             const currentDateTime = new Date().toISOString();
             const moochesUntilElection = calculateMooches(currentDateTime);
-            moochesElement.innerHTML = `Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://theweek.com/speedreads/861881/anthony-scaramucci-measures-time-mooches" target="_blank" style="text-decoration: none;">*</a></sup>: ${moochesUntilElection}`;
+            moochesElement.innerHTML = `Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://www.nbcnews.com/politics/politics-news/scaramucci-sets-new-record-shortest-term-communications-director-n788281" target="_blank" style="text-decoration: none;">*</a></sup>: ${moochesUntilElection}`;
         }
 
         updateMooches();
