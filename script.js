@@ -1,6 +1,9 @@
 function calculateWeeksUntilElection(date) {
-    const electionDate = new Date('2024-11-05T00:00:00');
-    let inputDate = new Date(`2024-${date}T00:00:00`);
+    const electionDate = new Date('2024-11-05');
+    let inputDate = new Date(`2024-${date}`);
+    // while (inputDate.getDay() !== 2) {
+    //     inputDate.setDate(inputDate.getDate() + 1);
+    // }
     const weeksUntilElection = Math.ceil((electionDate - inputDate) / (7 * 24 * 60 * 60 * 1000));
     return weeksUntilElection;
 }
