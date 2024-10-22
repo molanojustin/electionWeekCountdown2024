@@ -62,8 +62,9 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         `;
     } else {
         const date = currentDate.toISOString().slice(5, 10); // Get current date in MM-DD format
-        const weeksUntilElection = calculateWeeksUntilElection(date);
+        // const weeksUntilElection = calculateWeeksUntilElection(date);
         const daysUntilElection = calculateDaysUntilElection(currentDate, electionDate);
+        const weeksUntilElection = Math.floor(daysUntilElection / 7);
         const countdownElement = document.getElementById('countdown');
         const daysElement = document.getElementById('days');
         const moochesElement = document.getElementById('mooches');
