@@ -1,3 +1,13 @@
+function calculateWeeksUntilElection(date) {
+    const electionDate = new Date('2024-11-05');
+    let inputDate = new Date(`2024-${date}`);
+    // while (inputDate.getDay() !== 2) {
+    //     inputDate.setDate(inputDate.getDate() + 1);
+    // }
+    const weeksUntilElection = Math.ceil((electionDate - inputDate) / (7 * 24 * 60 * 60 * 1000));
+    return weeksUntilElection;
+}
+
 // Function to calculate days until election
 function calculateDaysUntilElection(currentDate, electionDate) {
     const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
@@ -52,8 +62,8 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         `;
     } else {
         const date = currentDate.toISOString().slice(5, 10); // Get current date in MM-DD format
+        const weeksUntilElection = calculateWeeksUntilElection(date);
         const daysUntilElection = calculateDaysUntilElection(currentDate, electionDate);
-        const weeksUntilElection = Math.floor(daysUntilElection / 7);
         const countdownElement = document.getElementById('countdown');
         const daysElement = document.getElementById('days');
         const moochesElement = document.getElementById('mooches');
